@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="weather-search">
+        <div class="row">
+            <div class="col-xs-12">
+                <div>
+                    <form class="form-inline" role="form">
+                        <span class="btn-group" >
+                            <button ng-repeat="item in exampleLocations" ng-click="setLocation(item)" type="submit" class="btn btn-default">{{item}}</button>
+                        </span>
+                        <!--<span class="form-group {{hasState}}">
+                            <label class="sr-only" for="location">City</label>
+                            <input ng-model="location" type="text" class="form-control" id="location" placeholder="City">
+                        </span>
+                        <button ng-click="getForecastByLocation(location)" type="submit" class="btn btn-primary">Search!</button>
+                        <span ng-show="message" class="alert"><span class="glyphicon glyphicon-arrow-left">&nbsp;</span>{{message}}</span>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather-data" ng-show="true">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="">
+                    <h3>
+                        {{weather.name}}
+                        <!--<small>Lon: {{forecast.city.coord.lon | number:2}} Lat: {{forecast.city.coord.lat | number:2}} Population: {{forecast.city.population | number:0}}</small>-->
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <!--<div weather-panel="awww" show-entry="awww"></div>-->
+
+                <div class="weather panel panel-primary">
+                    <div class="panel-heading">{{parseDate(weather.dt) | date:'short'}}</div>
+                    <div class="panel-body">
+                        <div>
+                            <p class="lead">
+                                <img ng-src="{{getIconImageUrl(weather.weather[0].icon)}}" />
+                                {{weather.main.temp - kelvin | number:1}}&#176;C {{weather.weather[0].main}}
+                            </p>
+                            <p>
+                                 {{weather.weather[0].description}}&nbsp;&#126;&nbsp;
+                                High: {{weather.main.temp_max - kelvin}}&#176;C&nbsp;&#126;&nbsp;
+                                Low: {{weather.main.temp_min - kelvin}}&#176;C
+                                Wind:{{weather.wind.speed}} mph at {{weather.wind.deg}}&#176;N
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-success" ng-click="getForecast(weather.name)">FORECAST</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="onForecast">
+            <div class="col-xs-12">
+                <div class="weather panel panel-primary">
+                    <div class="panel-heading">Weather Forecast</div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Date/Time</th>
+                                <th class="text-center">Avg Temperature</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Humidity</th>
+                                <th class="text-center">Wind</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="data in forecastWeather">
+                                <td class="text-center">{{parseDate(data.dt) | date:'short'}}</td>
+                                <td class="text-center">{{data.main.temp - kelvin | number:1}}&#176;C</td>
+                                <td class="text-center">
+                                    <img ng-src="{{getIconImageUrl(data.weather[0].icon)}}" />
+                                    {{data.weather[0].description}}
+                                </td>
+                                <td class="text-center">{{data.main.humidity}} %</td>
+                                <td class="text-center">{{data.wind.speed}} mph at {{data.wind.deg | number:0}}&#176;N</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

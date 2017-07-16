@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="openWeatherApp">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/app.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Weather App</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li class=""><a href="#/forecast">Forecast</a></li>-->
+                    <!--<li class=""><a href="#/storm"><span class="label label-danger">Wind over Nothern Germany</span></a></li>-->
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div ng-view></div>
+        </div>
+        <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <small>
+                <span class="navbar-text"><a href="http://pratyks.github.io">Pratik</a></span>
+            </small>
+        </nav>
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular/angular-route.js"></script>
+        <script src="lib/angular/angular-resource.js"></script>
+        <script src="lib/iso-3166-country-codes-angular/iso-3166-country-codes-angular.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/directives.js"></script>
+    </body>
+</html>
