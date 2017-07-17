@@ -5,7 +5,7 @@
 angular.module('openWeatherApp.services', [])
 
 
-  .value('exampleLocations',['Mumbai','Amsterdam','Oslo','Berlin','Athens','London'])
+  .value('exampleLocations',['Amsterdam','Oslo','Berlin','Athens','London'])
 
   .factory('weatherService',function($http){
 
@@ -18,7 +18,6 @@ angular.module('openWeatherApp.services', [])
                  method:'GET',
                  url:apiBaseUrl+'/weather?q='+loc+'&appid='+apiKey
               }).then(function success(response){
-                  console.log('INN HERE ',loc);
                   cb(response);
               },function error(response){
                   cb(response);
